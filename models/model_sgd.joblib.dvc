@@ -1,0 +1,4 @@
+outs:
+- md5: e9ae8d63f2c6df7636ae1fefab31d9c7
+  size: 241076
+  path: model_sgd.joblib
