@@ -13,7 +13,7 @@ def main(repo_path: Path):
     test_csv_path = repo_path / "data/processed/test.csv"
     test_data, labels = load_data(test_csv_path)
 
-    model_sgd = joblib.load(repo_path / "models/model_sgd.joblib")
+    model_sgd = joblib.load(repo_path / "models/model_rf.joblib")
     predictions = model_sgd.predict(test_data)
 
     accuracy = accuracy_score(labels, predictions)
