@@ -8,7 +8,8 @@ import numpy as np
 import pandas as pd
 from skimage.io import imread_collection
 from skimage.transform import resize
-from sklearn.linear_model import SGDClassifier
+# from sklearn.linear_model import SGDClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 
 def load_images(df: pd.DataFrame, column_name: str) -> List:
@@ -45,9 +46,12 @@ def main(repo_path: Path):
     """Train pipeline"""
     train_csv_path = repo_path / "data/processed/train.csv"
     train_data, labels = load_data(train_csv_path)
-    model_sgd = SGDClassifier(max_iter=500)
-    model_sgd.fit(train_data, labels)
-    joblib.dump(model_sgd, repo_path / "models/model_sgd.joblib")
+    # model_sgd = SGDClassifier(max_iter=500)
+    # model_sgd.fit(train_data, labels)
+    # joblib.dump(model_sgd, repo_path / "models/model_sgd.joblib")
+    model_rf = RandomForestClassifier(n_estimators=1000, max_depth=12, n_jobs=-1)
+    model_rf.fit(train_data, labels)
+    joblib.dump(model_rf, repo_path / "models/model_rf.joblib")
 
 
 if __name__ == "__main__":

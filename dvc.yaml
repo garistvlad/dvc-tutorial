@@ -13,11 +13,11 @@ stages:
     - data/processed/train.csv
     - src/train.py
     outs:
-    - models/model_sgd.joblib
+    - models/model_rf.joblib
   evaluate:
     cmd: python src/evaluate.py
     deps:
-    - models/model_sgd.joblib
+    - models/model_rf.joblib
     - src/evaluate.py
     metrics:
     - metrics/accuracy.json:
